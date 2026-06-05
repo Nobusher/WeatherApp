@@ -54,4 +54,5 @@ namespace WeatherApp.Models
 
     public record LocationInfo(double Lat, double Lon, string City);
     public record WeatherInfo(double Temperature, double WindSpeed);
+    public record WeatherData(string city, double Temperature, double WindSpeed);
 }

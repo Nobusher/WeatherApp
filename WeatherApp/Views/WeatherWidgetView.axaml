@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:WeatherApp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="viewmodels:WeatherWidgetViewModel"
+             x:Class="WeatherApp.Views.WeatherWidgetView">
+ <Border Classes="weather-card">
+     <StackPanel>
+         <TextBlock Classes="status" 
+                    Text="{Binding Status}" 
+                    IsVisible="{Binding IsLoading}"/>
+         <StackPanel IsVisible="{Binding !IsLoading}">
+
+             <TextBlock Classes="city"
+                        Text="{Binding City}"/>
+
+             <TextBlock Classes="temperature"
+                        Text="{Binding Temperature}"/>
+
+             <Separator Classes="divider"/>
+             <StackPanel Orientation="Horizontal" 
+                         HorizontalAlignment="Center"
+                         Spacing="8">
+                 <TextBlock Text="💨" FontSize="16"/>
+                 <TextBlock Classes="wind" Text="{Binding Wind}"/>
+                 </StackPanel>
+         </StackPanel>
+     </StackPanel>
+ </Border>
+</UserControl>

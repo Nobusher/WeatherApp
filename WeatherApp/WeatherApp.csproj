@@ -26,4 +26,10 @@
   <ItemGroup>
     <Folder Include="Controls\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\WeatherWidgetView.axaml.cs">
+      <DependentUpon>WeatherWidgetView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
