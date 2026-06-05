@@ -14,7 +14,6 @@ namespace WeatherApp.ViewModels
             LoadWeatherAsync();
         }
         private string _city = "-";
-
         public string City
         {
             get => _city;

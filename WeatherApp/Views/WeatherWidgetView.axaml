@@ -6,6 +6,9 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="viewmodels:WeatherWidgetViewModel"
              x:Class="WeatherApp.Views.WeatherWidgetView">
+    <UserControl.DataContext>
+        <viewmodels:WeatherWidgetViewModel/>
+    </UserControl.DataContext>
  <Border Classes="weather-card">
      <StackPanel>
          <TextBlock Classes="status" 

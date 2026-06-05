@@ -1,0 +1,43 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- Add Styles Here -->
+  <Style Selector="Border.weather-card">
+      <Setter Property="Background" Value="#1e1e2e"/>
+      <Setter Property="CornerRadius" Value="16"/>
+      <Setter Property="Padding" Value="32"/>
+      <Setter Property="Width" Value="320"/>
+  </Style>
+    <Style Selector="TextBlock.city">
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#c8d6f4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style Selector="TextBlock.temperature">
+        <Setter Property="FontSize" Value="64"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="#89dceb"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,8,0,0"/>
+    </Style>
+    <Style Selector="Separator.divider">
+        <Setter Property="Margin" Value="0,16"/>
+        <Setter Property="Background" Value="#313244"/>
+    </Style>
+    <Style Selector="TextBlock.wind">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="#a6adc8"/>
+    </Style>
+    <Style Selector="TextBlock.status">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="#cdd6f4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+   
+</Styles>
