@@ -53,7 +53,7 @@ namespace WeatherApp.ViewModels
             {
                 var (location, weather) = await _weatherLocator.GetLocationWithWeatherAsync();
                 City = location.City;
-                Temperature = $"{weather.Temperature}°C";
+                Temperature = $"🌡️{weather.Temperature}°C";
                 Wind = $"{weather.WindSpeed}km/h";
                 IsLoading = false;
                
