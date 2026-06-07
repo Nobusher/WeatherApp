@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -31,17 +32,32 @@ namespace WeatherApp.Models
         public async Task<WeatherInfo> GetWeatherAsync(double lat, double lon)
         {
             var url = FormattableString.Invariant(
-                $"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m,wind_speed_10m&timezone=auto"
+                 $"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,wind_speed_10m_max&timezone=auto"
             );
 
             var response = await _client.GetStringAsync(url);
             var weather = JsonDocument.Parse(response);
-            var current = weather.RootElement.GetProperty("current");
 
-            return new WeatherInfo(
-                current.GetProperty("temperature_2m").GetDouble(),
-                current.GetProperty("wind_speed_10m").GetDouble()
-            );
+            var current = weather.RootElement.GetProperty("current");
+            double temp = current.GetProperty("temperature_2m").GetDouble();
+            double wind = current.GetProperty("wind_speed_10m").GetDouble();
+
+            var daily = weather.RootElement.GetProperty("daily");
+            var dates = daily.GetProperty("time");
+            var maxTemps = daily.GetProperty("temperature_2m_max");
+            var minTemps = daily.GetProperty("temperature_2m_min");
+            var winds = daily.GetProperty("wind_speed_10m_max");
+
+            var forecast = Enumerable.Range(0, dates.GetArrayLength())
+                .Select(i => new DailyForecast(
+                    DateTime.Parse(dates[i].GetString()!),
+                    maxTemps[i].GetDouble(),
+                    minTemps[i].GetDouble(),
+                    winds[i].GetDouble()
+                ))
+                .ToList();
+
+            return new WeatherInfo(temp, wind, forecast);
         }
 
         public async Task<(LocationInfo Location, WeatherInfo Weather)> GetLocationWithWeatherAsync()
@@ -53,6 +69,8 @@ namespace WeatherApp.Models
     }
 
     public record LocationInfo(double Lat, double Lon, string City);
-    public record WeatherInfo(double Temperature, double WindSpeed);
-    public record WeatherData(string city, double Temperature, double WindSpeed);
+
+    public record DailyForecast(DateTime Date, double TempMax, double TempMin, double WindSpeed);
+
+    public record WeatherInfo(double Temperature, double WindSpeed, List<DailyForecast> Daily);
 }

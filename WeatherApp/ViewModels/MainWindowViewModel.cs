@@ -9,7 +9,7 @@ namespace WeatherApp.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-       
+        public WeatherWidgetViewModel Weather { get; } = new WeatherWidgetViewModel();
 
         public MainWindowViewModel()
         {

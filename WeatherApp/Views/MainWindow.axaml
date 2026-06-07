@@ -15,9 +15,20 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+			
+        </Grid.ColumnDefinitions>
 
-    <local:WeatherWidgetView 
-    HorizontalAlignment="Center" 
-    VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+			<RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+		 <local:WeatherWidgetView DataContext="{Binding Weather}"
+         Grid.Row="0" Margin="12"
+     />
+    </Grid>
+   
     
 </Window>

@@ -6,14 +6,16 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="viewmodels:WeatherWidgetViewModel"
              x:Class="WeatherApp.Views.WeatherWidgetView">
-    <UserControl.DataContext>
-        <viewmodels:WeatherWidgetViewModel/>
-    </UserControl.DataContext>
- <Border Classes="weather-card">
-     <StackPanel>
+ 
+   <Grid>
+		 <Border Classes="weather-card">
+             <Grid>
+				 <StackPanel HorizontalAlignment="Right">
+
          <TextBlock Classes="status" 
                     Text="{Binding Status}" 
                     IsVisible="{Binding IsLoading}"/>
+
          <StackPanel IsVisible="{Binding !IsLoading}">
 
              <TextBlock Classes="city"
@@ -23,13 +25,22 @@
                         Text="{Binding Temperature}"/>
 
              <Separator Classes="divider"/>
-             <StackPanel Orientation="Horizontal" 
+
+
+             <StackPanel Orientation="Horizontal" Margin="12"
                          HorizontalAlignment="Center"
                          Spacing="8">
-                 <TextBlock Text="💨" FontSize="16"/>
+                 <TextBlock Text="💨" FontSize="65"/>
                  <TextBlock Classes="wind" Text="{Binding Wind}"/>
                  </StackPanel>
          </StackPanel>
+
+
      </StackPanel>
+
+</Grid>
+     
  </Border>
+</Grid>
+
 </UserControl>
