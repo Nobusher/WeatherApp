@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="using:WeatherApp.Views"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
         x:Class="WeatherApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -21,13 +21,32 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-			<RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="25*"/>
+			<RowDefinition Height="90*"/>
+            <RowDefinition Height="70*"/>
         </Grid.RowDefinitions>
 
+         <TextBlock Margin="0,15,40,0" Classes="clock" Grid.Row="0" Text="{Binding Time}"/>
+
 		 <local:WeatherWidgetView DataContext="{Binding Weather}"
-         Grid.Row="0" Margin="12"
+         Grid.Row="1" Margin="0,0,40,0"
      />
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Disabled">
+            <ItemsControl Margin="40,50,40,70" HorizontalAlignment="Stretch"  ItemsSource="{Binding Weather.Daily}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:DayForecastWidget/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        </ScrollViewer>
+        
     </Grid>
    
     

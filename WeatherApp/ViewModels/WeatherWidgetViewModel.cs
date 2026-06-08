@@ -47,6 +47,12 @@ namespace WeatherApp.ViewModels
             get => _isLoading;
             set => this.RaiseAndSetIfChanged(ref _isLoading, value);
         }
+        private List<DailyForecast> _daily = new();
+        public List<DailyForecast> Daily 
+        {
+            get => _daily;
+            set => this.RaiseAndSetIfChanged(ref _daily, value);
+        }
         private async void LoadWeatherAsync()
         {
             try
@@ -56,6 +62,7 @@ namespace WeatherApp.ViewModels
                 Temperature = $"{weather.Temperature}°C";
                 Wind = $"{weather.WindSpeed}km/h ";
                 IsLoading = false;
+                Daily = weather.Daily;
                
             }
             catch (Exception ex)

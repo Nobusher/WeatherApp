@@ -11,8 +11,8 @@
       <Setter Property="Background">
           <Setter.Value>
               <LinearGradientBrush StartPoint="0%,50%" EndPoint="100%,50%">
-                  <GradientStop Color="#175fa3" Offset="0.3"/>
-                   <GradientStop Color="#d5e3f0" Offset="1"/>
+                  <GradientStop Color="#175fa3" Offset="0"/>
+                    <GradientStop Color="#0a3e6b" Offset="1"/>
               </LinearGradientBrush>
           </Setter.Value>
 
@@ -77,6 +77,16 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
+    <Style Selector="TextBlock.clock">
+        <Setter Property="FontSize" Value="80"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Heavy"/>
+      
+       
+    </Style>
+
    <Style Selector="Window">
        <Setter Property="Background">
            <Setter.Value>
@@ -88,4 +98,48 @@
        </Setter>
    </Style>
 
+    <Style Selector="Border.day-card">
+        <Setter Property="Background">
+            <Setter.Value>
+                <RadialGradientBrush Center="50%,50%" 
+                                     RadiusX="50%" RadiusY="50%">
+                    <GradientStop Color="#175fa3" Offset="0"/>
+                    <GradientStop Color="#0a3e6b" Offset="1"/>
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+
+    <Style Selector="TextBlock.day-date">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#CDD6F4"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock.day-name">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#a6adc8"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,4,0,0"/>
+    </Style>
+
+    <Style Selector="TextBlock.day-temp-max">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#89dceb"/>
+    </Style>
+
+    <Style Selector="TextBlock.day-temp-min">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="#a6adc8"/>
+    </Style>
+
+    <Style Selector="TextBlock.day-wind">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#a6adc8"/>
+    </Style>
 </Styles>

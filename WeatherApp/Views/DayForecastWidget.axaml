@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:WeatherApp.Models"
+             x:DataType="viewmodels:DailyForecast"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WeatherApp.Views.DayForecastWidget">
+  <Grid>
+      <Border Classes="day-card">
+          <StackPanel>
+              <TextBlock Classes="day-date"
+                         Text="{Binding Date, StringFormat='{}{0:dd.MM}'}"/> 
+
+              <TextBlock Classes="day-name"
+                         Text="{Binding Date, StringFormat='{}{0:dddd}'}"/>
+
+              <Separator Classes="divider"/>
+
+              <StackPanel Orientation="Horizontal"
+                          HorizontalAlignment="Center"
+                          Spacing="8">
+                  <TextBlock Classes="day-temp-min"
+                             Text="{Binding TempMin, StringFormat='{}{0}°'}"/>
+
+                  <TextBlock Text="/" Foreground="#a6adc8"/>
+
+                  <TextBlock Classes="day-temp-max"
+                             Text="{Binding TempMax,StringFormat='{}{0}°'}"/>
+              </StackPanel>
+              <StackPanel Orientation="Horizontal"
+                          HorizontalAlignment="Center"
+                          Spacing="4"
+                          Margin="0,8,0,0">
+                  <TextBlock Text="💨"/>
+                  <TextBlock Classes="day-wind"
+                             Text="{Binding WindSpeed, StringFormat='{}{0} km/h'}"/>
+              </StackPanel>
+          </StackPanel>
+      </Border>
+  </Grid>
+</UserControl>
